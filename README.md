@@ -6,13 +6,13 @@
   <p>A chrome extension to add and use more themes to Google Colab</p>
   <br>
 </div>
-## Downloads
+<h3> Downloads </h3>
 <div>
   <ul>
   <li><a href="https://chrome.google.com/webstore/detail/hledcfghfgmmjpnfkklcifpcdogjlgig/">Chrome</a></li>
 </ul>
 </div>
-## Screenshots
+<h3> Screenshots </h3>
 <div>
   <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/owl_pic.jpg?token=GHSAT0AAAAAABNLEXTXVWYIASMJWESIBNXEYTK3HFQ">
    <br>
