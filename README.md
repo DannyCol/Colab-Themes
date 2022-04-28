@@ -8,5 +8,10 @@
 </div>
 
 ## Screenshots
-![screenshot](images/cobalt_pic)
-![screenshot](images/owl_pic)
+<div>
+  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/owl_pic.jpg?token=GHSAT0AAAAAABNLEXTXVWYIASMJWESIBNXEYTK3HFQ">
+   <br>
+  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/cobalt_pic.jpg?token=GHSAT0AAAAAABNLEXTW3COKDHHIIP7WCK74YTK3GGQ">
+
+
+</div>
