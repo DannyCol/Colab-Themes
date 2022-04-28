@@ -1,0 +1,35 @@
+{
+    "name" : "Themes for Google Colab",
+    "description" : "More themes for Google Colab",
+    "version" : "1.0.0",
+    "manifest_version" : 3,
+    "permissions": ["scripting", "storage", "runtime"],
+    "action" : {
+        "default_title" : "Themes for Google Colab",
+        "default_popup" : "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://colab.research.google.com/*", "*://*.googleusercontent.com/*"],
+            "js": ["content.js"],
+            "run_at": "document_end",
+            "all_frames":true
+        }
+    ],
+    "host_permissions" : [
+        "https://colab.research.google.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [{
+        "resources": ["themes/*.json"],
+        "matches": ["<all_urls>"]
+      }],
+    "icons": {
+        "16": "icons/favicon16.png",
+        "32": "icons/favicon32.png",
+        "96": "icons/favicon96.png",
+        "128": "icons/favicon128.png"
+    }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="popup.css">
+
+</head>
+<body>
+    <h2> Themes for Google Colab</h2>
+    <hr>
+    <form>
+        <select id="colab_themes_choice">
+            <option value="" selected disabled hidden>Choose a theme!</option>
+        </select>
+        <hr>
+        <label for="on_off"> <b>Extension toggle:</b></label>
+        <label class="switch">
+            <input id=on_off type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <hr>
+        <h3>Upload your own theme:</h3>
+        <p>
+            This tool requires a Monaco compatible theme. 
+            Instructions on how to convert VS Code themes
+            themes to Monaco compatible themes are <a href=
+            "https://github.com/Nishkalkashyap/monaco-vscode-textmate-theme-converter"> here</a>
+        </p>
+        <br>
+        <input type="file" id="upload">
+        <div id = errorMsg></div>
+        <div id = goodMsg></div>
+    </form>
+</body>
+</html>
+<script type="module" src="popup.js"></script>
