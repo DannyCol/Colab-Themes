@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/icons/favicon128.png?token=GHSAT0AAAAAABNLEXTX3YP56DKXLPV6X7EYYTK3CFA">
+  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/icons/favicon128.png?token=GHSAT0AAAAAABNLEXTXWJ3ON735HH7ZYA2WYTK3MMA">
   <br>
   <h1>Themes for Google Colab</h1>
   <br>
@@ -14,9 +14,9 @@
 </div>
 <h3> Screenshots </h3>
 <div>
-  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/owl_pic.jpg?token=GHSAT0AAAAAABNLEXTXVWYIASMJWESIBNXEYTK3HFQ">
+  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/owl_pic.jpg?token=GHSAT0AAAAAABNLEXTWWI4DZDQZLDCTHMYEYTK3NHQ">
    <br>
-  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/cobalt_pic.jpg?token=GHSAT0AAAAAABNLEXTW3COKDHHIIP7WCK74YTK3GGQ">
+  <img src="https://raw.githubusercontent.com/DannyCol/colab_themes/main/images/cobalt_pic.jpg?token=GHSAT0AAAAAABNLEXTX663SHP3NUF45QTVYYTK3N3Q">
 
 
 </div>
