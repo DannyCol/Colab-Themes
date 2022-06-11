@@ -4,10 +4,10 @@ function changeMonacoTheme(theme_json) {
   if (cur_theme == 'dark') {
     mode = '-dark';
   }
-  var scriptContent = 'monaco.editor.defineTheme(\'colab'+ mode +'\', ' +
+  let scriptContent = 'monaco.editor.defineTheme(\'colab'+ mode +'\', ' +
   'JSON.parse(\'' + JSON.stringify(theme_json) + '\') ); ' +
   'monaco.editor.setTheme(\'colab'+ mode +'\'); '
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.id = 'tmpScript';
     script.type = "text/javascript";
     script.appendChild(document.createTextNode(scriptContent));
@@ -20,8 +20,10 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
     chrome.storage.sync.get(['extension_active','filename','user_added'], function(result) {
       if (result.extension_active) {
         if (result.user_added) {
-          chrome.storage.sync.get(filename, function(result) {
-            let theme_json = result.filename;
+          let filename = result.filename;
+          chrome.storage.sync.get([filename + '1', filename + '2', filename + '3'], function(result2) {
+            let theme_json = result2[filename + '1'] + result2[filename + '2'] + result2[filename + '3'];
+            theme_json = JSON.parse(theme_json);
             // set monaco
             chrome.scripting.executeScript({
               target: {tabId: tabId},
