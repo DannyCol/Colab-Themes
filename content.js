@@ -8,14 +8,14 @@ function changeCssTheme(page_css) {
   else {
     css_rules = 'html {' + page_css + '}';
   }
-  var style = document.createElement('style');
+  let style = document.createElement('style');
   style.appendChild(document.createTextNode(css_rules));
   document.documentElement.appendChild(style);
   chrome.runtime.sendMessage('changeMonaco' + cur_theme);
 }
 
 function loadContent(){
-    var jsInitChecktimer = setInterval (checkForPage, 150);
+    let jsInitChecktimer = setInterval (checkForPage, 150);
     function checkForPage () {
         if (  document.getElementsByTagName('html').length >= 1) {
             clearInterval (jsInitChecktimer);
