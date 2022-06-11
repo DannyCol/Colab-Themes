@@ -1,6 +1,6 @@
 {
     "name" : "Colab Themes",
-    "description" : "More themes for Google Colab!",
+    "description" : "Changes the appearance of Google Colab!",
     "version" : "1.0.1",
     "manifest_version" : 3,
     "permissions": ["scripting", "storage"],
