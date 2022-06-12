@@ -47,7 +47,7 @@ function getCssTheme(theme_json) {
   let fg_extra_1 = scale(fg, 1.05);
   let bg_light = scale(bg, 1.15);
   if (hex_is_light(bg)) {
-    bg_light = scale(bg,1.035);
+    bg_light = scale(bg,1.03);
     bg_extra_1 = scale(bg, 1.05);
     bg_extra_2 = scale(bg, 1.1);
     bg_less_1 = scale(bg, 0.952);
@@ -342,7 +342,7 @@ function copyMatplot(theme_json, filename) {
   for (let x of unfiltered) {colors.push("'#" +  x + "'")};
 
   let rc = 'rcParams[';
-  let code = '# basic matplotlib theme of ' + filename + '\n#NOTE: this does not support 3d plots\nfrom matplotlib import rcParams\nfrom cycler import cycler\n';
+  let code = '# basic matplotlib theme of ' + filename + '\n# NOTE: this does not support 3d plots\nfrom matplotlib import rcParams\nfrom cycler import cycler\n';
   code += rc + "'axes.prop_cycle']=cycler(color=["+colors.toString()+"])\n";
   // text items
   let fgs = ['axes.edgecolor','axes.labelcolor','xtick.color','ytick.color','text.color','figure.edgecolor','grid.color'];
@@ -354,7 +354,7 @@ function copyMatplot(theme_json, filename) {
   let bg = theme_json.colors['editor.background'];
   let bg_light = scale(bg, 1.15);
   if (hex_is_light(bg)) {
-    bg_light = scale(bg,1.035);
+    bg_light = scale(bg,1.03);
   }
   code += rc + "'axes.facecolor']=" + "'" + bg_light +"'\n";
   // plot outside

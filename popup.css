@@ -1,12 +1,44 @@
-button {
+.button_style {
+  display: inline-block;
   background: #484848;
   color: #D0D0D0;
+  border: 1px solid #D0D0D0;
+  padding: 2px 5px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  font-size: 10pt;
+}
+.button_style:hover {
+  background: #585858;
+  cursor: pointer;
 }
 html {
   background: #282828;
   color: #D0D0D0;
 }
-
+#upload::-webkit-file-upload-button {
+  visibility: hidden;
+}
+#upload::before {
+  content: 'Choose file';
+  display: inline-block;
+  background: #484848;
+  color: #D0D0D0;
+  border: 1px solid #D0D0D0;
+  padding: 2px 5px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  font-size: 10pt;
+}
+#upload:hover::before {
+  background: #585858;
+  cursor: pointer;
+}
+#upload {
+  color: transparent;
+}
 hr {
   color: 	#D0D0D0;
 }
