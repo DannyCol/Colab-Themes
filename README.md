@@ -19,12 +19,12 @@
 <div>
 <table>
   <tr>
-    <td><img src="images/nord.jpg" width="640" height="400"></td>
-    <td><img src="images/solarized-light.jpg" width="640" height="400"></td>
+    <td><img src="images/nord.jpg" width="320" height="200"></td>
+    <td><img src="images/solarized-light.jpg" width="320" height="200"></td>
   </tr>
   <tr>
-    <td><img src="images/gruvbox.jpg" width="640" height="400"></td>
-    <td><img src="images/cobalt.jpg" width="640" height="400"></td>
+    <td><img src="images/gruvbox.jpg" width="320" height="200"></td>
+    <td><img src="images/cobalt.jpg" width="320" height="200"></td>
   </tr>
 </table>
 
