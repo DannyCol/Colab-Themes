@@ -47,7 +47,7 @@ function getCssTheme(theme_json) {
   let fg_extra_1 = scale(fg, 1.05);
   let bg_light = scale(bg, 1.15);
   if (hex_is_light(bg)) {
-    bg_light = bg;
+    bg_light = scale(bg,1.035);
     bg_extra_1 = scale(bg, 1.05);
     bg_extra_2 = scale(bg, 1.1);
     bg_less_1 = scale(bg, 0.952);
@@ -273,6 +273,94 @@ document.getElementById('on_off').onchange = function() {
 chrome.storage.sync.get('extension_active', function(result) {
   document.getElementById('on_off').checked = result.extension_active;
 });
+
+// matplotlib python code generation
+document.getElementById('matplotlib').addEventListener('click', handleMatplot);
+
+function handleMatplot() {
+  chrome.storage.sync.get(['extension_active','filename','user_added'], function(result) {
+    if (result.extension_active) {
+      if (result.user_added) {
+        let filename = result.filename;
+        chrome.storage.sync.get([filename + '1', filename + '2', filename + '3'], function(result2) {
+          let theme_json = result2[filename + '1'] + result2[filename + '2'] + result2[filename + '3'];
+          theme_json = JSON.parse(theme_json);
+          // set monaco
+          copyMatplot(theme_json, result.filename);
+        });
+      }
+      else {
+        fetch('themes/'+ result.filename +'.json')
+        .then(data => data.json())
+        .then(theme_json => {
+          // set monaco
+          copyMatplot(theme_json, result.filename);
+        });
+      }  
+    }
+  });
+}
+
+function copyMatplot(theme_json, filename) {
+  // a heuristic
+  let unfiltered = new Set()
+  let sublime = new Set()
+  for (let i = 0; i < theme_json.rules.length; i++) {
+    if (theme_json.rules[i].token.match('punct')) {
+      if (theme_json.rules[i].hasOwnProperty('foreground')) {
+        unfiltered.add(theme_json.rules[i].foreground) 
+      }
+    }
+    if (theme_json.rules[i].token.match('meta')) {
+      if (theme_json.rules[i].hasOwnProperty('foreground')) {
+        unfiltered.add(theme_json.rules[i].foreground) 
+      }
+    }
+    if (theme_json.rules[i].token.match('sublime')) {
+      if (theme_json.rules[i].hasOwnProperty('foreground')) {
+        sublime.add(theme_json.rules[i].foreground) 
+      }
+    }
+  }
+
+  if (unfiltered.size <= 2) {
+    for (let i = 0; i < theme_json.rules.length; i++) {
+      if (theme_json.rules[i].token.match('entity')) {
+        if (theme_json.rules[i].hasOwnProperty('foreground')) {
+          unfiltered.add(theme_json.rules[i].foreground) 
+        }
+      }
+      if (theme_json.rules[i].token.match('constant')) {
+        if (theme_json.rules[i].hasOwnProperty('foreground')) {
+          unfiltered.add(theme_json.rules[i].foreground) 
+        }
+      }
+    }
+  }
+  for (let x of unfiltered) { if (sublime.has(x)) { unfiltered.delete(x) } };
+  let colors = Array();
+  for (let x of unfiltered) {colors.push("'#" +  x + "'")};
+
+  let rc = 'rcParams[';
+  let code = '# basic matplotlib theme of ' + filename + '\n#NOTE: this does not support 3d plots\nfrom matplotlib import rcParams\nfrom cycler import cycler\n';
+  code += rc + "'axes.prop_cycle']=cycler(color=["+colors.toString()+"])\n";
+  // text items
+  let fgs = ['axes.edgecolor','axes.labelcolor','xtick.color','ytick.color','text.color','figure.edgecolor','grid.color'];
+  let fg = "'" + theme_json.colors['editor.foreground'] + "'";
+  for (let x of fgs) { code += rc + "'" + x + "']=" + fg + "\n"};
+  // grid
+  code += `rcParams['grid.linestyle']=':'\n`;
+  // plot inside
+  let bg = theme_json.colors['editor.background'];
+  let bg_light = scale(bg, 1.15);
+  if (hex_is_light(bg)) {
+    bg_light = scale(bg,1.035);
+  }
+  code += rc + "'axes.facecolor']=" + "'" + bg_light +"'\n";
+  // plot outside
+  code += rc + "'figure.facecolor']=" + "'" + bg_light +"'\n";
+  navigator.clipboard.writeText(code);
+}
 
 // import theme button logic
 let errorMsg = document.getElementById('errorMsg');
